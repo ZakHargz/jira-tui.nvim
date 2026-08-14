@@ -6,7 +6,13 @@ choice (sidekick.nvim, CopilotChat.nvim, or your own integration).
 
 ![filetype](https://img.shields.io/badge/filetype-jira--tui-blue)
 
+![screenshot](assets/screenshot.png)
+
+*(Sample data — see `scripts/demo.lua`/`scripts/demo.tape` to regenerate this
+yourself with `vhs`.)*
+
 ## Features
+
 
 - 📋 Kanban board rendered as columns in a single buffer — no floating
   windows, no flicker, just fast plain-text rendering.

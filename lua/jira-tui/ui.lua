@@ -1044,7 +1044,12 @@ show_detail_pane = function(list_buf)
 
   local cur_win = vim.api.nvim_get_current_win()
   vim.api.nvim_set_current_win(s.list_win)
+  -- Force the new split to land on the right regardless of the user's
+  -- global 'splitright' setting (see the identical fix in M.open() below).
+  local splitright = vim.o.splitright
+  vim.o.splitright = true
   vim.cmd("vsplit")
+  vim.o.splitright = splitright
   local detail_win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(detail_win, s.detail_buf)
 
@@ -1105,7 +1110,12 @@ function M.open()
   local list_win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(list_win, list_buf)
 
+  -- Force the detail split to land on the right regardless of the user's
+  -- global 'splitright' setting — the layout shouldn't depend on it.
+  local splitright = vim.o.splitright
+  vim.o.splitright = true
   vim.cmd("vsplit")
+  vim.o.splitright = splitright
   local detail_win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(detail_win, detail_buf)
 
