@@ -1,0 +1,55 @@
+*jira-tui.txt*    A keyboard-driven Jira Kanban board for Neovim
+
+==============================================================================
+CONTENTS                                                    *jira-tui-contents*
+
+  1. Introduction .......................... |jira-tui-introduction|
+  2. Setup .................................. |jira-tui-setup|
+  3. Authentication .......................... |jira-tui-auth|
+  4. Commands ................................ |jira-tui-commands|
+  5. Keymaps ................................. |jira-tui-keymaps|
+
+==============================================================================
+1. Introduction                                        *jira-tui-introduction*
+
+jira-tui.nvim renders a Jira Kanban board as a plain-text buffer inside
+Neovim, with a detail pane, comment composer, and one-keypress hand-off of
+issue context to an AI tool (sidekick.nvim, CopilotChat.nvim, or your own
+integration). See the README for the full feature list and screenshots.
+
+https://github.com/ZakHargz/jira-tui.nvim
+
+==============================================================================
+2. Setup                                                     *jira-tui-setup*
+
+>lua
+    require("jira-tui").setup({
+      server = "https://yourteam.atlassian.net",
+      email = "you@yourteam.com",
+      project = "ABC",
+    })
+<
+
+See README.md for the full option list (`board_name`, `extra_jql`,
+`max_results`, `columns`, `auth`, `ai`).
+
+==============================================================================
+3. Authentication                                              *jira-tui-auth*
+
+Resolved in order: `auth.token` (string or function) -> `$JIRA_API_TOKEN`
+(or `auth.token_env`) -> `auth.token_file` (plain-text file). See
+README.md#authentication for full examples.
+
+==============================================================================
+4. Commands                                                *jira-tui-commands*
+
+                                                                    *:JiraTui*
+:JiraTui                Open the Jira Kanban board in a new tab.
+
+==============================================================================
+5. Keymaps                                                  *jira-tui-keymaps*
+
+All keymaps are buffer-local to the board/detail buffers. See README.md for
+the full table.
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
